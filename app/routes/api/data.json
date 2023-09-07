@@ -1,0 +1,16 @@
+{
+  "jokes": [
+    {
+      "id": "1",
+      "title": "Why do programmers prefer dark mode?",
+      "content": "Because light attracts bugs.",
+      "imageUrl": "https://some-random-image1.jpg"
+    },
+    {
+      "id": "2",
+      "title": "Why do developers prefer coffee?",
+      "content": "Because it helps them Java.",
+      "imageUrl": "https://some-random-image2.jpg"
+    }
+  ]
+}

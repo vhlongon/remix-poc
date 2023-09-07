@@ -57,8 +57,27 @@ export interface paths {
         };
       };
     };
+    /** Delete a specific joke by ID */
+    delete: {
+      parameters: {
+        path: {
+          /** @description ID of the joke to delete */
+          id: string;
+        };
+      };
+      responses: {
+        /** @description Joke deleted successfully */
+        204: {
+          content: never;
+        };
+        /** @description Joke not found */
+        404: {
+          content: never;
+        };
+      };
+    };
     /** Update a specific joke by ID */
-    put: {
+    patch: {
       parameters: {
         path: {
           /** @description ID of the joke to update */
@@ -77,25 +96,6 @@ export interface paths {
           content: {
             "application/json": components["schemas"]["Joke"];
           };
-        };
-        /** @description Joke not found */
-        404: {
-          content: never;
-        };
-      };
-    };
-    /** Delete a specific joke by ID */
-    delete: {
-      parameters: {
-        path: {
-          /** @description ID of the joke to delete */
-          id: string;
-        };
-      };
-      responses: {
-        /** @description Joke deleted successfully */
-        204: {
-          content: never;
         };
         /** @description Joke not found */
         404: {

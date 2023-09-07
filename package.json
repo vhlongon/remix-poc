@@ -6,7 +6,7 @@
     "dev": "remix dev",
     "start": "remix-serve build",
     "typecheck": "tsc",
-    "generate-types": "openapi-typescript ./app/schema.api.json -o ./app/types/api.ts"
+    "generate-types": "openapi-typescript ./app/routes/api/schema/schema.json -o ./app/routes/api/types.ts"
   },
   "dependencies": {
     "@remix-run/css-bundle": "^1.19.3",
@@ -14,8 +14,11 @@
     "@remix-run/react": "^1.19.3",
     "@remix-run/serve": "^1.19.3",
     "isbot": "^3.6.8",
+    "openapi-fetch": "^0.7.5",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "zod": "^3.22.2",
+    "zodix": "^0.4.1"
   },
   "devDependencies": {
     "@remix-run/dev": "^1.19.3",
@@ -24,6 +27,7 @@
     "@types/react-dom": "^18.0.11",
     "eslint": "^8.38.0",
     "openapi-typescript": "^6.5.4",
+    "prettier": "^3.0.3",
     "remix-flat-routes": "^0.5.10",
     "typescript": "^5.0.4"
   },

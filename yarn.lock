@@ -5443,6 +5443,18 @@ onetime@^5.1.0, onetime@^5.1.2:
   dependencies:
     mimic-fn "^2.1.0"
 
+openapi-fetch@^0.7.5:
+  version "0.7.5"
+  resolved "https://registry.yarnpkg.com/openapi-fetch/-/openapi-fetch-0.7.5.tgz#83feb4dd1a49b2af98b6d1d9734dfcb746e48827"
+  integrity sha512-N3NGEllyyZ+SzVIWKSes+jJg1quT7dLYMFA2W0nmoMJT8+yomQNcfqBBfnVNdij+zfC7tTqlnm61SpKt4QYgIQ==
+  dependencies:
+    openapi-typescript-helpers "^0.0.2"
+
+openapi-typescript-helpers@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/openapi-typescript-helpers/-/openapi-typescript-helpers-0.0.2.tgz#830ba8385461bfd19e27c451c2e6a4a965d61f3e"
+  integrity sha512-r5Z4tlGa2l6jYO1ENT9Giqo/ZWzWPmsYUR41O01kjYr7vg4iBFaMh0W0g8Ef72SpeU2F+TY6CAdKxTv7aq+WXA==
+
 openapi-typescript@^6.5.4:
   version "6.5.4"
   resolved "https://registry.yarnpkg.com/openapi-typescript/-/openapi-typescript-6.5.4.tgz#66b05a011bf4fe6239485a70aab7bb8d23d2b339"
@@ -5740,6 +5752,11 @@ prettier@^2.7.1:
   version "2.8.8"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.8.tgz#e8c5d7e98a4305ffe3de2e1fc4aca1a71c28b1da"
   integrity sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==
+
+prettier@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.0.3.tgz#432a51f7ba422d1469096c0fdc28e235db8f9643"
+  integrity sha512-L/4pUDMxcNa8R/EthV08Zt42WBO4h1rarVtK0K+QJG0X187OLo7l699jWw0GKuwzkPQ//jMFA/8Xm6Fh3J/DAg==
 
 pretty-format@^27.0.2:
   version "27.5.1"
@@ -7146,6 +7163,16 @@ yocto-queue@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
+
+zod@^3.22.2:
+  version "3.22.2"
+  resolved "https://registry.yarnpkg.com/zod/-/zod-3.22.2.tgz#3add8c682b7077c05ac6f979fea6998b573e157b"
+  integrity sha512-wvWkphh5WQsJbVk1tbx1l1Ly4yg+XecD+Mq280uBGt9wa5BKSWf4Mhp6GmrkPixhMxmabYY7RbzlwVP32pbGCg==
+
+zodix@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/zodix/-/zodix-0.4.1.tgz#a8c444c6295b94bd337f4aa2e31f23e8183a081c"
+  integrity sha512-YanL8q3BhejzcGY/2rB3cgR3wRQaoHfDD32A7DQX2GJNBZ3Ca1T2t/hG3V7OHFi+E24J+BiEYzDlE2Htgj6kYQ==
 
 zwitch@^2.0.0:
   version "2.0.4"
