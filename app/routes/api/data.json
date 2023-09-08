@@ -11,6 +11,54 @@
       "title": "Why do developers prefer coffee?",
       "content": "Because it helps them Java.",
       "imageUrl": "https://some-random-image2.jpg"
+    },
+    {
+      "id": "3",
+      "title": "Why do programmers prefer dark chocolate?",
+      "content": "Because it's bitter, just like their code.",
+      "imageUrl": "https://some-random-image3.jpg"
+    },
+    {
+      "id": "4",
+      "title": "Why do programmers prefer Linux?",
+      "content": "Because it's open source, just like their hearts.",
+      "imageUrl": "https://some-random-image4.jpg"
+    },
+    {
+      "id": "5",
+      "title": "Why do programmers prefer dark alleys?",
+      "content": "Because they like to avoid exceptions.",
+      "imageUrl": "https://some-random-image5.jpg"
+    },
+    {
+      "id": "6",
+      "title": "Why do programmers prefer dark humor?",
+      "content": "Because it's not for everyone.",
+      "imageUrl": "https://some-random-image6.jpg"
+    },
+    {
+      "id": "7",
+      "title": "Why do programmers prefer cats?",
+      "content": "Because they're purrfect.",
+      "imageUrl": "https://some-random-image7.jpg"
+    },
+    {
+      "id": "8",
+      "title": "Why do programmers prefer Git?",
+      "content": "Because they like to commit.",
+      "imageUrl": "https://some-random-image8.jpg"
+    },
+    {
+      "id": "9",
+      "title": "Why do programmers prefer Python?",
+      "content": "Because it's easy to read, just like their code.",
+      "imageUrl": "https://some-random-image9.jpg"
+    },
+    {
+      "id": "10",
+      "title": "Why do programmers prefer dark rooms?",
+      "content": "Because they like to debug.",
+      "imageUrl": "https://some-random-image10.jpg"
     }
   ]
 }
