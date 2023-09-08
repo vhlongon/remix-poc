@@ -1,5 +1,10 @@
-# Welcome to Remix!
+# POC Remix
 
+This is a small proof of concept for Remix using as an external api (`/api`) and an app.
+The api is created using `openapi-typescript` and `openapi-fetch` so we have a type-safe api client. Read more about it [here](https://github.com/drwpow/openapi-typescript).
+
+- data is saved to a local file in `app/routes/api/data.json`
+- the schema is located at `app/routes/api/schema/schema.json`.
 - [Remix Docs](https://remix.run/docs)
 
 ## Development
@@ -7,7 +12,7 @@
 From your terminal:
 
 ```sh
-npm run dev
+yarn run dev
 ```
 
 This starts your app in development mode, rebuilding assets on file changes.
@@ -17,42 +22,17 @@ This starts your app in development mode, rebuilding assets on file changes.
 First, build your app for production:
 
 ```sh
-npm run build
+yarn run build
 ```
 
 Then run the app in production mode:
 
 ```sh
-npm start
+yarn start
 ```
 
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `remix build`
-
-- `build/`
-- `public/build/`
-
-### Using a Template
-
-When you ran `npx create-remix@latest` there were a few choices for hosting. You can run that again to create a new project, then copy over relevant code/assets from your current app to the new project that's pre-configured for your target server.
-
-Most importantly, this means everything in the `app/` directory, but if you've further customized your current application outside of there it may also include:
-
-- Any assets you've added/updated in `public/`
-- Any updated versions of root files such as `.eslintrc.js`, etc.
+To re-generate the types for the api client:
 
 ```sh
-cd ..
-# create a new project, and pick a pre-configured host
-npx create-remix@latest
-cd my-new-remix-app
-# remove the new project's app (not the old one!)
-rm -rf app
-# copy your app over
-cp -R ../my-old-remix-app/app app
+yarn generate-types
 ```
