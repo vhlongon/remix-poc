@@ -10,8 +10,10 @@ import {
   useLoaderData
 } from '@remix-run/react';
 import { getEnv } from './utils/getEnv';
+import tailwindStylesheet from '~/tailwind.css';
 
 export const links: LinksFunction = () => [
+  { rel: 'stylesheet', href: tailwindStylesheet },
   ...(cssBundleHref ? [{ rel: 'stylesheet', href: cssBundleHref }] : [])
 ];
 
