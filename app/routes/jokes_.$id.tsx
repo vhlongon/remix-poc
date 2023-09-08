@@ -33,7 +33,8 @@ export const action = async ({ request, params }: LoaderArgs) => {
 
   if (intent === 'edit') {
     const body = validRequestBody(Object.fromEntries(formData));
-    if ('errors' in body) {
+
+    if (body.errors) {
       return json({ errors: body.errors });
     }
 
@@ -43,7 +44,7 @@ export const action = async ({ request, params }: LoaderArgs) => {
           id
         }
       },
-      body
+      body: body.data
     });
   }
 

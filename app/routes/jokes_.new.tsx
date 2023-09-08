@@ -11,12 +11,12 @@ export const action = async ({ request }: LoaderArgs) => {
   const formData = await request.formData();
   const body = validRequestBody(Object.fromEntries(formData));
 
-  if ('errors' in body) {
+  if (body.errors) {
     return json({ errors: body.errors });
   }
 
   await apiClient.POST('/jokes/new', {
-    body: body
+    body: body.data
   });
 
   return redirect('/jokes');

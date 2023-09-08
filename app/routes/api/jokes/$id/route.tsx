@@ -45,12 +45,12 @@ export const action = async ({ request, params }: LoaderArgs) => {
     case 'PATCH': {
       const body = validRequestBody(await request?.json());
 
-      if ('errors' in body) {
-        throw json(body.errors, 400);
+      if (body.errors) {
+        throw json({ errors: body.errors }, 400);
       }
 
       const response: PatchResponse = {
-        data: await updateJoke(id, body)
+        data: await updateJoke(id, body.data)
       };
 
       return json(response, 200);

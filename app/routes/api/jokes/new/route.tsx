@@ -10,10 +10,10 @@ export const action = async ({ request }: LoaderArgs) => {
   if (request.method === 'POST') {
     const body = validRequestBody(await request?.json());
 
-    if ('errors' in body) {
-      throw json(body.errors, 400);
+    if (body.errors) {
+      throw json({ errors: body.errors }, 400);
     }
-    const response: PostResponse = { data: await createJoke(body) };
+    const response: PostResponse = { data: await createJoke(body.data) };
 
     return json(response, 200);
   } else {

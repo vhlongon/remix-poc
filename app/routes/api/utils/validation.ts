@@ -31,10 +31,10 @@ export const validRequestBody = (body: unknown) => {
   const parsed = bodySchema.safeParse(body);
 
   if (!parsed.success) {
-    return { message: 'Invalid body', errors: parsed.error.flatten().fieldErrors };
+    return { success: false, errors: parsed.error.flatten().fieldErrors };
   }
 
-  return parsed.data;
+  return { success: true, data: parsed.data };
 };
 
 export const validateParams = (params: LoaderArgs['params']) => {
