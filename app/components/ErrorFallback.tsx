@@ -11,8 +11,8 @@ export const ErrorContainer = ({
   children?: React.ReactNode;
 }) => {
   return (
-    <div className="relative h-full">
-      <div className="absolute inset-0 flex justify-center bg-red-100 pt-4 text-red-500">
+    <div className="h-full">
+      <div className="absolute inset-0 flex justify-center items-center bg-red-100 pt-4 text-red-500">
         <div className="text-red-brand text-center">
           <div className="text-lg font-bold">Oh snap!</div>
           <div className="px-2 text-base">{children}</div>
@@ -34,7 +34,7 @@ export const ErrorFallback = () => {
         <p>
           {error.statusText} {error.status}{' '}
         </p>
-        <pre>{error.data}</pre>
+        <pre>{JSON.stringify(error.data)}</pre>
       </ErrorContainer>
     );
   }

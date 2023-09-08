@@ -10,10 +10,10 @@ import {
   useLoaderData
 } from '@remix-run/react';
 import { getEnv } from './utils/getEnv';
-import tailwindStylesheet from '~/tailwind.css';
+import tailwindStylesheetUrl from './styles/tailwind.css';
 
 export const links: LinksFunction = () => [
-  { rel: 'stylesheet', href: tailwindStylesheet },
+  { rel: 'stylesheet', href: tailwindStylesheetUrl },
   ...(cssBundleHref ? [{ rel: 'stylesheet', href: cssBundleHref }] : [])
 ];
 
@@ -34,7 +34,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="min-h-screen flex justify-center items-center bg-indigo-800 text-indigo-300">
         <Outlet />
         <ScrollRestoration />
         <Scripts />
