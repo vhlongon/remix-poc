@@ -1,11 +1,17 @@
 import type { LoaderArgs } from '@remix-run/node';
 import { json } from '@remix-run/node';
-import data from '../data.json';
-import { createJoke } from '../utils/data';
+import type { paths } from '../types';
+import { createJoke, getJokes } from '../utils/data';
 import { validateQuery } from '../utils/validation';
 
+type GetJokesResponse = paths['/jokes']['get']['responses']['200']['content']['application/json'];
+
 export const loader = async () => {
-  return json(data.jokes, 200);
+  const response: GetJokesResponse = {
+    data: await getJokes()
+  };
+
+  return json(response, 200);
 };
 
 export const action = async ({ request, params }: LoaderArgs) => {

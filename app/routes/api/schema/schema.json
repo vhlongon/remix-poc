@@ -21,9 +21,14 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Joke"
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Joke"
+                      }
+                    }
                   }
                 }
               }
@@ -45,12 +50,17 @@
           }
         },
         "responses": {
-          "201": {
+          "200": {
             "description": "Joke created successfully",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Joke"
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Joke"
+                    }
+                  }
                 }
               }
             }
@@ -78,7 +88,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Joke"
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Joke"
+                    }
+                  }
                 }
               }
             }
@@ -118,7 +133,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Joke"
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Joke"
+                    }
+                  }
                 }
               }
             }
@@ -142,8 +162,20 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "Joke deleted successfully"
+          "200": {
+            "description": "Joke deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
           },
           "404": {
             "description": "Joke not found"

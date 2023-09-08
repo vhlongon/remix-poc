@@ -1,8 +1,12 @@
 import type { LoaderArgs } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import data from '../../data.json';
+import type { paths } from '../../types';
 import { createJoke, deleteJoke, throwNotFound, updateJoke } from '../../utils/data';
 import { validateParams, validateQuery } from '../../utils/validation';
+
+type GetJokeResponse =
+  paths['/jokes/{id}']['get']['responses']['200']['content']['application/json'];
 
 export const loader = async ({ params }: LoaderArgs) => {
   const id = validateParams(params);
@@ -13,8 +17,20 @@ export const loader = async ({ params }: LoaderArgs) => {
     return throwNotFound();
   }
 
-  return json(joke, 200);
+  const response: GetJokeResponse = {
+    data: joke
+  };
+
+  return json(response, 200);
 };
+
+type DeleteResponse =
+  paths['/jokes/{id}']['delete']['responses']['200']['content']['application/json'];
+
+type PatchResponse =
+  paths['/jokes/{id}']['patch']['responses']['200']['content']['application/json'];
+
+type PostResponse = paths['/jokes']['post']['responses']['200']['content']['application/json'];
 
 export const action = async ({ request, params }: LoaderArgs) => {
   const id = validateParams(params);
@@ -28,16 +44,19 @@ export const action = async ({ request, params }: LoaderArgs) => {
   switch (request.method) {
     case 'POST': {
       const args = validateQuery(request);
-      await createJoke(args);
+      const response: PostResponse = { data: await createJoke(args) };
+
+      return json(response, 200);
     }
     case 'PATCH': {
       const args = validateQuery(request);
-      await updateJoke(id, args);
-      return json({ message: `joke with id ${id} updated` }, 200);
+      const response: PatchResponse = { data: await updateJoke(id, args) };
+
+      return json(response, 200);
     }
     case 'DELETE': {
-      await deleteJoke(id);
-      return json({ message: `joke with id ${id} deleted` }, 200);
+      const response: DeleteResponse = { data: await deleteJoke(id) };
+      return json(response, 200);
     }
     case 'PUT': {
       throw json({ message: 'use PATCH to update the joke' }, { status: 400 });

@@ -12,7 +12,9 @@ export interface paths {
         /** @description List of jokes */
         200: {
           content: {
-            "application/json": components["schemas"]["Joke"][];
+            "application/json": {
+              data?: components["schemas"]["Joke"][];
+            };
           };
         };
       };
@@ -27,9 +29,11 @@ export interface paths {
       };
       responses: {
         /** @description Joke created successfully */
-        201: {
+        200: {
           content: {
-            "application/json": components["schemas"]["Joke"];
+            "application/json": {
+              data?: components["schemas"]["Joke"];
+            };
           };
         };
       };
@@ -48,7 +52,9 @@ export interface paths {
         /** @description Joke found */
         200: {
           content: {
-            "application/json": components["schemas"]["Joke"];
+            "application/json": {
+              data?: components["schemas"]["Joke"];
+            };
           };
         };
         /** @description Joke not found */
@@ -67,8 +73,12 @@ export interface paths {
       };
       responses: {
         /** @description Joke deleted successfully */
-        204: {
-          content: never;
+        200: {
+          content: {
+            "application/json": {
+              data?: boolean;
+            };
+          };
         };
         /** @description Joke not found */
         404: {
@@ -94,7 +104,9 @@ export interface paths {
         /** @description Joke updated successfully */
         200: {
           content: {
-            "application/json": components["schemas"]["Joke"];
+            "application/json": {
+              data?: components["schemas"]["Joke"];
+            };
           };
         };
         /** @description Joke not found */
