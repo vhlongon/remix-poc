@@ -1,8 +1,7 @@
 import type { LoaderArgs } from '@remix-run/node';
 import { json } from '@remix-run/node';
-import data from '../../data.json';
 import type { paths } from '../../types';
-import { createJoke, deleteJoke, throwNotFound, updateJoke } from '../../utils/data';
+import { createJoke, deleteJoke, getJokes, throwNotFound, updateJoke } from '../../utils/data';
 import { validateParams, validateQuery } from '../../utils/validation';
 
 type GetJokeResponse =
@@ -11,7 +10,9 @@ type GetJokeResponse =
 export const loader = async ({ params }: LoaderArgs) => {
   const id = validateParams(params);
 
-  const joke = data.jokes.find((j) => j.id === id);
+  const jokes = await getJokes();
+
+  const joke = jokes.find((j) => j.id === id);
 
   if (!joke) {
     return throwNotFound();
@@ -35,7 +36,8 @@ type PostResponse = paths['/jokes']['post']['responses']['200']['content']['appl
 export const action = async ({ request, params }: LoaderArgs) => {
   const id = validateParams(params);
 
-  const joke = data.jokes.find((j) => j.id === id);
+  const jokes = await getJokes();
+  const joke = jokes.find((j) => j.id === id);
 
   if (!joke) {
     return throwNotFound();

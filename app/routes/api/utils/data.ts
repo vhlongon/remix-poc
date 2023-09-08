@@ -1,7 +1,6 @@
 import { json } from '@remix-run/node';
 import fs from 'fs/promises';
 import path from 'path';
-import data from '../data.json';
 import type { components } from '../types';
 
 type Joke = components['schemas']['Joke'];
@@ -18,7 +17,7 @@ export const getJokes = async (): Promise<Joke[]> => {
   return JSON.parse(data).jokes;
 };
 export const deleteJoke = async (id: string): Promise<boolean> => {
-  const { jokes } = data;
+  const jokes = await getJokes();
 
   const jokeIndex = jokes.findIndex((j) => j.id === id);
 
@@ -34,7 +33,7 @@ export const deleteJoke = async (id: string): Promise<boolean> => {
 };
 
 export const updateJoke = async (id: string, args: Partial<Joke>): Promise<Joke> => {
-  const { jokes } = data;
+  const jokes = await getJokes();
 
   const jokeIndex = jokes.findIndex((j) => j.id === id);
 
@@ -60,7 +59,7 @@ export const updateJoke = async (id: string, args: Partial<Joke>): Promise<Joke>
 };
 
 export const createJoke = async (args: Omit<Joke, 'id'>): Promise<Joke> => {
-  const { jokes } = data;
+  const jokes = await getJokes();
 
   const newJoke = {
     ...args,
