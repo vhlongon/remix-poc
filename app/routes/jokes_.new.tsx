@@ -38,7 +38,7 @@ const Jokes = () => {
       <div className="flex flex-col gap-2 border-l-4 border-indigo-600 italic pl-4">
         <input
           name="title"
-          className="w-full text-2xl border bg-transparent border-gray-400 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="w-full text-xl border bg-transparent border-gray-400 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           placeholder="Enter a title..."
         />
         {data?.errors.title && <ErrorMessage>{data.errors.title}</ErrorMessage>}
