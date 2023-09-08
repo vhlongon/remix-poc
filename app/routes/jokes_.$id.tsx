@@ -1,7 +1,9 @@
 import type { LoaderArgs } from '@remix-run/node';
 import { json, redirect } from '@remix-run/node';
 import { Form, useActionData, useLoaderData } from '@remix-run/react';
+import { useState } from 'react';
 import { ErrorFallback } from '~/components/ErrorFallback';
+import { ErrorMessage } from '~/components/ErrorMessage';
 import { apiClient } from './api/utils/client';
 import { throwNotFound } from './api/utils/data';
 import { validRequestBody, validateParams } from './api/utils/validation';
@@ -62,8 +64,15 @@ export const ErrorBoundary = () => {
 };
 
 const JokeById = () => {
-  const { title, content } = useLoaderData<typeof loader>();
-  const data = useActionData<typeof action>();
+  const values = useLoaderData<typeof loader>();
+  const response = useActionData<typeof action>();
+  const [hasChanged, setHasChanged] = useState(false);
+
+  const handleOnchange = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+    const { value, name } = e.target;
+    const hasChanged = value.trim() !== values[name as keyof typeof values]?.trim();
+    setHasChanged(hasChanged);
+  };
 
   return (
     <div className="w-full max-w-lg">
@@ -72,21 +81,24 @@ const JokeById = () => {
           <input
             name="title"
             className="text-2xl border bg-transparent border-gray-400 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            defaultValue={title}
+            defaultValue={values.title}
+            onChange={handleOnchange}
           />
-          {data?.errors?.title && <p className="text-red-500 text-sm">{data.errors.title}</p>}
+          {response?.errors?.title && <ErrorMessage>{response.errors.title}</ErrorMessage>}
           <textarea
             name="content"
             className="text-lg border bg-transparent border-gray-400 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            defaultValue={content}
+            defaultValue={values.content}
+            onChange={handleOnchange}
           />
-          {data?.errors?.content && <p className="text-red-500 text-sm">{data.errors.content}</p>}
+          {response?.errors?.content && <ErrorMessage>{response.errors.content}</ErrorMessage>}
         </div>
         <div className="flex gap-4 justify-end">
           <button
             name="intent"
             value="edit"
-            className="bg-blue-500 hover:bg-blue-700 self-end text-white font-bold py-2 px-4 rounded"
+            disabled={!hasChanged}
+            className="bg-blue-500 hover:bg-blue-700 self-end text-white font-bold py-2 px-4 rounded disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-blue-500"
           >
             edit
           </button>
