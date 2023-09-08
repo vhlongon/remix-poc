@@ -8,8 +8,15 @@ export const meta: V2_MetaFunction = () => {
 export default function Index() {
   return (
     <div style={{ fontFamily: 'system-ui, sans-serif', lineHeight: '1.8' }}>
-      <h1>Remix POC</h1>
-      <Link to="jokes">Jokes</Link>
+      <main className="max-w-2xl mx-auto px-4 py-16 flex flex-col">
+        <h1 className="text-3xl font-bold mb-4">Remix POC</h1>
+        <Link
+          to="jokes"
+          className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 inline-flex justify-center rounded mt-4"
+        >
+          Jokes
+        </Link>
+      </main>
     </div>
   );
 }
