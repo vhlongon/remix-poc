@@ -2,63 +2,63 @@
   "jokes": [
     {
       "id": "1",
-      "title": "Why do programmers prefer dark mode?",
+      "title": "Why do programmers prefer using the dark mode?",
       "content": "Because light attracts bugs.",
-      "imageUrl": "https://some-random-image1.jpg"
+      "imageUrl": "https://picsum.photos/200/300"
     },
     {
       "id": "2",
-      "title": "Why do developers prefer coffee?",
-      "content": "Because it helps them Java.",
-      "imageUrl": "https://some-random-image2.jpg"
+      "title": "Why are modern programming languages so materialistic?",
+      "content": "Because they are object-oriented.",
+      "imageUrl": "https://picsum.photos/200/300"
     },
     {
       "id": "3",
-      "title": "Why do programmers prefer dark chocolate?",
-      "content": "Because it's bitter, just like their code.",
-      "imageUrl": "https://some-random-image3.jpg"
+      "title": "Genders are a lot like booleans.",
+      "content": "There's only two of them.",
+      "imageUrl": "https://picsum.photos/200/300"
     },
     {
       "id": "4",
-      "title": "Why do programmers prefer Linux?",
-      "content": "Because it's open source, just like their hearts.",
-      "imageUrl": "https://some-random-image4.jpg"
+      "title": "why do python programmers wear glasses?",
+      "content": "Because they can't C.",
+      "imageUrl": "https://picsum.photos/200/300"
     },
     {
       "id": "5",
-      "title": "Why do programmers prefer dark alleys?",
-      "content": "Because they like to avoid exceptions.",
-      "imageUrl": "https://some-random-image5.jpg"
+      "title": "What's the object-oriented way to become wealthy?",
+      "content": "Inheritance.",
+      "imageUrl": "https://picsum.photos/200/300"
     },
     {
       "id": "6",
-      "title": "Why do programmers prefer dark humor?",
-      "content": "Because it's not for everyone.",
-      "imageUrl": "https://some-random-image6.jpg"
+      "title": "What is the most used language in programming?",
+      "content": "Profanity.",
+      "imageUrl": "https://picsum.photos/200/300"
     },
     {
       "id": "7",
-      "title": "Why do programmers prefer cats?",
-      "content": "Because they're purrfect.",
-      "imageUrl": "https://some-random-image7.jpg"
+      "title": "Why is 6 afraid of 7 in hexadecimal Canada?",
+      "content": "Because 7 8 9 A?",
+      "imageUrl": "https://picsum.photos/200/300"
     },
     {
       "id": "8",
-      "title": "Why do programmers prefer Git?",
-      "content": "Because they like to commit.",
-      "imageUrl": "https://some-random-image8.jpg"
+      "title": "Why do Java programmers hate communism?",
+      "content": "They don't want to live in a classless society.",
+      "imageUrl": "https://picsum.photos/200/300"
     },
     {
       "id": "9",
-      "title": "Why do programmers prefer Python?",
-      "content": "Because it's easy to read, just like their code.",
-      "imageUrl": "https://some-random-image9.jpg"
+      "title": "How many programmers does it take to screw in a light bulb?",
+      "content": "None. It's a hardware problem.",
+      "imageUrl": "https://picsum.photos/200/300"
     },
     {
       "id": "10",
-      "title": "Why do programmers prefer dark rooms?",
-      "content": "Because they like to debug.",
-      "imageUrl": "https://some-random-image10.jpg"
+      "title": "Why does no one like SQLrillex?",
+      "content": "He keeps dropping the database.",
+      "imageUrl": "https://picsum.photos/200/300"
     }
   ]
 }
