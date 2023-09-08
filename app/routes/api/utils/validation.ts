@@ -1,5 +1,4 @@
 import type { LoaderArgs } from '@remix-run/node';
-import { json } from '@remix-run/node';
 import { z } from 'zod';
 import { zx } from 'zodix';
 import type { TypeToZod } from '~/utils/types';
@@ -8,29 +7,31 @@ import { throwNotFound } from './data';
 
 type UpdateJokeParams = components['schemas']['UpdateJoke'];
 
-export const validateQuery = (request: LoaderArgs['request']) => {
-  const bodySchema = z
-    .object<TypeToZod<UpdateJokeParams>>({
-      title: z.string().min(3),
-      imageUrl: z.string().optional(),
-      content: z
-        .string()
-        .min(10, {
-          message: 'Content must be at least 10 characters'
-        })
-        .max(100, {
-          message: 'Content must be at most 100 characters'
-        })
-    })
-    .transform(({ imageUrl, ...rest }) => ({
-      ...rest,
-      imageUrl: (imageUrl as string) ?? undefined
-    }));
+const bodySchema = z
+  .object<TypeToZod<UpdateJokeParams>>({
+    title: z.string().min(3, {
+      message: 'Title must be at least 3 characters'
+    }),
+    imageUrl: z.string().optional(),
+    content: z
+      .string()
+      .min(10, {
+        message: 'Content must be at least 10 characters'
+      })
+      .max(100, {
+        message: 'Content must be at most 100 characters'
+      })
+  })
+  .transform(({ imageUrl, ...rest }) => ({
+    ...rest,
+    imageUrl: (imageUrl as string) ?? undefined
+  }));
 
-  const parsed = zx.parseQuerySafe(request, bodySchema);
+export const validRequestBody = (body: unknown) => {
+  const parsed = bodySchema.safeParse(body);
 
   if (!parsed.success) {
-    throw json({ message: 'Invalid body', errors: parsed.error.flatten() }, { status: 400 });
+    return { message: 'Invalid body', errors: parsed.error.flatten().fieldErrors };
   }
 
   return parsed.data;
@@ -43,7 +44,7 @@ export const validateParams = (params: LoaderArgs['params']) => {
   const parsed = zx.parseParamsSafe(params, paramsSchema);
 
   if (!parsed.success) {
-    return throwNotFound();
+    return throwNotFound(params.id);
   }
 
   return parsed.data.id;

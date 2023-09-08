@@ -9,8 +9,8 @@ import {
   ScrollRestoration,
   useLoaderData
 } from '@remix-run/react';
-import { getEnv } from './utils/getEnv';
 import tailwindStylesheetUrl from './styles/tailwind.css';
+import { getEnv } from './utils/getEnv';
 
 export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: tailwindStylesheetUrl },

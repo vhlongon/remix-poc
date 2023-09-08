@@ -19,6 +19,8 @@ export interface paths {
         };
       };
     };
+  };
+  "/jokes/new": {
     /** Create a new joke */
     post: {
       /** @description Joke object to be created */

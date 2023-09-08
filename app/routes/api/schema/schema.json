@@ -35,7 +35,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/jokes/new": {
       "post": {
         "summary": "Create a new joke",
         "requestBody": {

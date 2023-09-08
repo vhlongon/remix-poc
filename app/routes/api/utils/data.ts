@@ -5,8 +5,8 @@ import type { components } from '../types';
 
 type Joke = components['schemas']['Joke'];
 
-export const throwNotFound = () => {
-  throw json({ message: 'Not Found' }, { status: 404 });
+export const throwNotFound = (id?: string) => {
+  throw json({ message: id ? `Joke with id ${id} not found` : 'Not found' }, { status: 404 });
 };
 
 const getDataFilePath = () => path.join(__dirname, '../', 'app', 'routes', 'api', 'data.json');
@@ -21,10 +21,6 @@ export const deleteJoke = async (id: string): Promise<boolean> => {
 
   const jokeIndex = jokes.findIndex((j) => j.id === id);
 
-  if (jokeIndex === -1) {
-    return throwNotFound();
-  }
-
   const updatedJokes = [...jokes.slice(0, jokeIndex), ...jokes.slice(jokeIndex + 1)];
 
   await fs.writeFile(getDataFilePath(), JSON.stringify({ jokes: updatedJokes }, null, 2));
@@ -36,10 +32,6 @@ export const updateJoke = async (id: string, args: Partial<Joke>): Promise<Joke>
   const jokes = await getJokes();
 
   const jokeIndex = jokes.findIndex((j) => j.id === id);
-
-  if (jokeIndex === -1) {
-    return throwNotFound();
-  }
 
   const updatedJoke = {
     ...jokes[jokeIndex],

@@ -1,8 +1,8 @@
 import type { LoaderArgs } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import type { paths } from '../../types';
-import { createJoke, deleteJoke, getJokes, throwNotFound, updateJoke } from '../../utils/data';
-import { validateParams, validateQuery } from '../../utils/validation';
+import { deleteJoke, getJokes, throwNotFound, updateJoke } from '../../utils/data';
+import { validRequestBody, validateParams } from '../../utils/validation';
 
 type GetJokeResponse =
   paths['/jokes/{id}']['get']['responses']['200']['content']['application/json'];
@@ -15,7 +15,7 @@ export const loader = async ({ params }: LoaderArgs) => {
   const joke = jokes.find((j) => j.id === id);
 
   if (!joke) {
-    return throwNotFound();
+    return throwNotFound(id);
   }
 
   const response: GetJokeResponse = {
@@ -31,8 +31,6 @@ type DeleteResponse =
 type PatchResponse =
   paths['/jokes/{id}']['patch']['responses']['200']['content']['application/json'];
 
-type PostResponse = paths['/jokes']['post']['responses']['200']['content']['application/json'];
-
 export const action = async ({ request, params }: LoaderArgs) => {
   const id = validateParams(params);
 
@@ -40,19 +38,20 @@ export const action = async ({ request, params }: LoaderArgs) => {
   const joke = jokes.find((j) => j.id === id);
 
   if (!joke) {
-    return throwNotFound();
+    return throwNotFound(id);
   }
 
   switch (request.method) {
-    case 'POST': {
-      const args = validateQuery(request);
-      const response: PostResponse = { data: await createJoke(args) };
-
-      return json(response, 200);
-    }
     case 'PATCH': {
-      const args = validateQuery(request);
-      const response: PatchResponse = { data: await updateJoke(id, args) };
+      const body = validRequestBody(await request?.json());
+
+      if ('errors' in body) {
+        throw json(body.errors, 400);
+      }
+
+      const response: PatchResponse = {
+        data: await updateJoke(id, body)
+      };
 
       return json(response, 200);
     }
@@ -63,9 +62,8 @@ export const action = async ({ request, params }: LoaderArgs) => {
     case 'PUT': {
       throw json({ message: 'use PATCH to update the joke' }, { status: 400 });
     }
-
     default: {
-      return throwNotFound();
+      throw json({ message: 'Method not allowed' }, { status: 405 });
     }
   }
 };
