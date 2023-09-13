@@ -3,7 +3,7 @@
 This is a small proof of concept for Remix using as an external api (`/api`) and an app.
 The api is created using `openapi-typescript` and `openapi-fetch` so we have a type-safe api client. Read more about it [here](https://github.com/drwpow/openapi-typescript).
 
-- data is saved to a local file in `app/routes/api/data.json`
+- data is saved to a local file in `app/routes/api/data.json` (more realistic it would be data coming from a db or a aws lamba, etc)
 - the schema is located at `app/routes/api/schema/schema.json`.
 - [Remix Docs](https://remix.run/docs)
 
